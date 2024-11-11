@@ -1,0 +1,215 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure the body and html are full-width and take up the full screen */
+body, html {
+    height: 100%;
+    width: 100%;  /* Ensure the width is also 100% */
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Fixed navigation bar at the top */
+.navigation-bar {
+    position: fixed;
+    top: 0;
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between elements */
+    background-color: #333;
+    color: white;
+    border-bottom: 1px solid #444;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensures it stays above other content */
+}
+
+/* Button and text styling in navigation bar */
+.navigation-bar button {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.navigation-bar button:hover {
+    background-color: #45a049;
+}
+
+.navigation-bar h4 {
+    margin: 0;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* Centered chat-container between navigation-bar and chat-footer */
+.chat-container {
+    margin-top: 60px; /* Height of the navigation bar (adjust as needed) */
+    margin-bottom: 80px; /* Height of the chat footer (adjust as needed) */
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f0f0f0;
+
+    /* Centered horizontally and responsive width */
+    width: 100%;
+    max-width: 600px; /* Match with navigation bar and chat footer */
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Height calculation to fill available space */
+    height: calc(100vh - 140px); /* Adjust based on combined heights of header and footer */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.message{
+    list-style-type: none;
+    padding: 0; /* Removes left padding */
+    margin: 0; /* Removes top and bottom margin */
+}
+
+/* Chat footer styles */
+.chat-footer {
+    position: fixed;
+    left: 50%; /* Move the left edge of the footer to the center */
+    bottom: 20px; /* Adjust the footer from the bottom */
+    transform: translateX(-50%); /* Offset the element by 50% of its width to center it */
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Optional: Ensure full width of the screen if needed */
+    max-width: 600px; /* Optional: Adjust width limit */
+}
+
+
+
+/* Input and button styling */
+.chat-footer input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.chat-footer button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.chat-footer button:hover {
+    background-color: #45a049;
+}
+
+.button.send{
+
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 980px) {
+    .navigation-bar {
+        width: 100%; /* Ensures full width on mobile screens */
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    /* Increase the size of the buttons */
+    .navigation-bar button {
+        font-size: 50px; /* Larger text on mobile */
+        padding: 12px 20px; /* Larger padding for bigger buttons */
+        height: auto; /* Adjust button height if necessary */
+    }
+
+    /* Optional: Increase the size of the text inside the navigation bar */
+    .navigation-bar h4 {
+        font-size: 50px; /* Larger text for the title */
+    }
+
+
+    .chat-container {
+        margin-top: 100px; /* Height of the navigation bar (adjust as needed) */
+        margin-bottom: 80px; /* Height of the chat footer (adjust as needed) */
+
+        /* Centered horizontally and responsive width */
+        width: 100%;
+        max-width: none;
+
+
+    }
+
+    .chat-container .message li {
+        display: block; /* Ensure each message is on a new line */
+        max-width: 80%; /* Limit the width of the bubble */
+        padding: 12px; /* Padding inside the bubble */
+        margin: 8px 0; /* Space between bubbles */
+        border-radius: 18px; /* Rounded corners for the bubble */
+        background-color: #f1f1f1; /* Light gray background for the bubble */
+        color: #333; /* Text color */
+        font-size: 50px; /* Default font size */
+        line-height: 1.5; /* Line spacing */
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        position: relative; /* Allows positioning the "tail" of the bubble */
+        word-wrap: break-word; /* Ensures long text wraps */
+        width: auto; /* Allow bubbles to take up space as needed */
+        max-width: 80%; /* Prevent the bubbles from getting too wide */
+        word-wrap: break-word; /* Ensure text breaks correctly */
+        clear: both; /* Prevent messages from floating next to each other */
+    }
+
+
+    /* Chat footer styles */
+    .chat-footer {
+        width: 100%; /* Ensure it spans the full width */
+        position: fixed;
+        bottom: 20px; /* Adjust to position slightly above the exact bottom */
+        left: 0; /* Align to the left of the screen */
+        transform: none; /* Remove the centering translation */
+        padding: 10px 20px; /* Adjust padding for mobile screens */
+        background-color: #ddd; /* Change background for visibility */
+        color: white; /* Ensure text is visible */
+        display: flex;
+        justify-content: space-between; /* Distribute space between items */
+        align-items: center; /* Vertically center items */
+        z-index: 1000; /* Keep it on top of other content */
+        max-width: none; /* Optional: Adjust width limit */
+    }
+
+    .chat-footer input[type="text"] {
+        font-size: 50px; /* Make text larger for better readability */
+    }
+
+    .chat-footer button {
+        font-size: 50px; /* Larger text on mobile */
+        padding: 12px 20px; /* Larger padding for bigger buttons */
+        height: auto; /* Adjust button height if necessary */
+    }
+
+
+
+}
